@@ -4,6 +4,7 @@
 body {
   background-color: #000000;
 }
+
 .movie-container {
   width: 100%;
   height: fit-content;
@@ -29,7 +30,7 @@ main > h2 {
 }
 .description-container {
   flex: 2;
-  padding: 10px;
+  padding: 20px;
 }
 .description-container > h2 {
   text-align: center;
@@ -65,18 +66,35 @@ main > h2 {
   box-shadow: rgb(71, 73, 53) 0px 0px 8px;
 }
 
-header{
-color:white;
-
-
-}
-#logo{
-    width: 200px;
-    height:200px;
+header {
+  box-shadow: rgb(71, 73, 53) 0px 2px 0px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
-footer{
-    color: white;
+header input {
+  height: 30px;
+  background-color: rgba(71, 73, 53, 0.3);
+  border: none;
+  padding: 5px;
+  color: white;
+  text-align: center;
+}
+
+header img{
+  width: 160px;
+  height:100px;
+}
+
+footer {
+  background-color: #4749354d;
+  height: 200px;
+  margin-top: 20px;
+}
+footer > p {
+  padding-top: 160px;
+  text-align: center;
 }
 
 @media screen and (min-width: 800px) {
@@ -85,4 +103,5 @@ footer{
     margin: 0 auto;
     height: fit-content;
   }
+ 
 }

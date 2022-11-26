@@ -26,12 +26,11 @@ if (isset($_GET['id'])) {
 
 <body>
     <header>
-        <div>
-            <img src="../includes/images/similar-logo.png" alt="movie-recom-logo" id="logo">
+    <div id="logo">
+            <a href="../index.php"> <img src="../includes/images/movie 1.png" alt=""></a>
         </div>
-        <div>Home</div>
-        <div>Search</div>
-        <div></div>
+        <div><input type="search" name="search" placeholder="Search another movie .."></div>
+
     </header>
     <main>
         <section class="movie-container">
@@ -57,10 +56,11 @@ if (isset($_GET['id'])) {
         </section>
         <h2>Movies similar to <?php echo $movie['name'] ?></h2>
         <section class="similar-movies">
-            </div>
+
+        </section>
     </main>
     <footer>
-        This is the footer
+        <p>Copyright &copy; Mamo Moloi</p>
 
     </footer>
 
