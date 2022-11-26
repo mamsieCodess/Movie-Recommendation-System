@@ -91,10 +91,12 @@ footer {
   background-color: #4749354d;
   height: 200px;
   margin-top: 20px;
+ 
 }
 footer > p {
   padding-top: 160px;
   text-align: center;
+  color:white;
 }
 
 @media screen and (min-width: 800px) {
