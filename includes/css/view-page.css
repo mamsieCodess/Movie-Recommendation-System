@@ -36,9 +36,16 @@ main > h2 {
   text-align: center;
   color: #474935;
 }
+
 .similar-movies {
-  height: 500px;
-  background-color: rgb(29, 29, 31);
+
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+
+.similar-movies img{
+  margin: 20px 20px 0 0 ;
 }
 
 .genre-date {

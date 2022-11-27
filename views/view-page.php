@@ -1,6 +1,5 @@
 <?php
 session_start();
-include '../model/movie.php';
 
 if (isset($_GET['id'])) {
     include "../includes/config/database.php";
@@ -8,7 +7,11 @@ if (isset($_GET['id'])) {
     $sql = "SELECT `*` FROM `movies` WHERE `id` = $id";
     $result = $conn->query($sql);
     $movie = $result->fetch_assoc();
+    $result->close();
+    $conn->close();
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +29,8 @@ if (isset($_GET['id'])) {
 
 <body>
     <header>
-    <div id="logo">
+        <div id="logo">
+
             <a href="../index.php"> <img src="../includes/images/movie 1.png" alt=""></a>
         </div>
         <div><input type="search" name="search" placeholder="Search another movie .."></div>
@@ -55,7 +59,38 @@ if (isset($_GET['id'])) {
 
         </section>
         <h2>Movies similar to <?php echo $movie['name'] ?></h2>
-        <section class="similar-movies">
+        <section class="similar-movies" style="color: white;">
+            <?php
+            include "../includes/config/database.php";
+            include '../model/movie.php';
+            $genre = $movie['genre'];
+            $sql = "SELECT * FROM `movies` WHERE `genre` = '$genre'";
+            $result = $conn->query($sql);
+            $similar_movies = $result->fetch_all(MYSQLI_ASSOC);
+            $_SESSION['movies'] = [];
+            foreach ($similar_movies as $data) {
+                $movie = new Movie(
+                    $data['id'],
+                    $data['name'],
+                    $data['description'],
+                    $data['thumbnail'],
+                    $data['genre'],
+                    $data['director'],
+                    $data['actors'],
+                    $data['release_year'],
+                    $data['movie_link']
+                );
+
+                array_push($_SESSION['movies'], $movie);
+            }
+            ?>
+            <?php foreach ($_SESSION['movies'] as $movieObject) : ?>
+                <div class="movie-wrapper">
+                    <a href="view-page.php?id=<?php echo $movieObject->getId() ?>">
+                        <img src="<?php echo $movieObject->getThumbnail() ?>" alt="movie-thumbnail">
+                    </a>
+                </div>
+            <?php endforeach ?>
 
         </section>
     </main>
